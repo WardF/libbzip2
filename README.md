@@ -1,26 +1,29 @@
+# Notes for the fork
 
-This is the README for bzip2/libzip2.
-This version is fully compatible with the previous public releases.
+This is a fork of the bzip2 project version `1.0.6`, with source code downloaded from http://bzip.org. The entire purpose of this is to integrate `cmake` support so that I can build 32 and 64-bit versions on Windows with an arbitrary version of Visual Studio.
 
-------------------------------------------------------------------
-This file is part of bzip2/libbzip2, a program and library for
-lossless, block-sorting data compression.
+# Header
 
-bzip2/libbzip2 version 1.0.6 of 6 September 2010
-Copyright (C) 1996-2010 Julian Seward <jseward@bzip.org>
+    This is the README for bzip2/libzip2.
+    This version is fully compatible with the previous public releases.
 
-Please read the WARNING, DISCLAIMER and PATENTS sections in this file.
+    This file is part of bzip2/libbzip2, a program and library for
+    lossless, block-sorting data compression.
 
-This program is released under the terms of the license contained
-in the file LICENSE.
-------------------------------------------------------------------
+    bzip2/libbzip2 version 1.0.6 of 6 September 2010
+    Copyright (C) 1996-2010 Julian Seward <jseward@bzip.org>
 
-Complete documentation is available in Postscript form (manual.ps),
+    Please read the WARNING, DISCLAIMER and PATENTS sections in this file.
+
+    This program is released under the terms of the license contained in the file LICENSE.
+
+
+> Complete documentation is available in Postscript form (manual.ps),
 PDF (manual.pdf) or html (manual.html).  A plain-text version of the
 manual page is available as bzip2.txt.
 
 
-HOW TO BUILD -- UNIX
+# HOW TO BUILD -- UNIX
 
 Type 'make'.  This builds the library libbz2.a and then the programs
 bzip2 and bzip2recover.  Six self-tests are run.  If the self-tests
@@ -29,25 +32,25 @@ complete ok, carry on to installation:
 To install in /usr/local/bin, /usr/local/lib, /usr/local/man and
 /usr/local/include, type
 
-   make install
+    make install
 
 To install somewhere else, eg, /xxx/yyy/{bin,lib,man,include}, type
 
-   make install PREFIX=/xxx/yyy
+    make install PREFIX=/xxx/yyy
 
 If you are (justifiably) paranoid and want to see what 'make install'
 is going to do, you can first do
 
-   make -n install                      or
-   make -n install PREFIX=/xxx/yyy      respectively.
+    make -n install                      or
+    make -n install PREFIX=/xxx/yyy      respectively.
 
 The -n instructs make to show the commands it would execute, but not
 actually execute them.
 
 
-HOW TO BUILD -- UNIX, shared library libbz2.so.
+## HOW TO BUILD -- UNIX, shared library libbz2.so.
 
-Do 'make -f Makefile-libbz2_so'.  This Makefile seems to work for
+Do `make -f Makefile-libbz2_so`.  This Makefile seems to work for
 Linux-ELF (RedHat 7.2 on an x86 box), with gcc.  I make no claims
 that it works for any other platform, though I suspect it probably
 will work for most platforms employing both ELF and gcc.
@@ -69,7 +72,7 @@ effort to upgrade to use version 1.0, since it is both faster and more
 robust than previous versions.
 
 
-HOW TO BUILD -- Windows 95, NT, DOS, Mac, etc.
+# HOW TO BUILD -- Windows 95, NT, DOS, Mac, etc.
 
 It's difficult for me to support compilation on all these platforms.
 My approach is to collect binaries for these platforms, and put them
@@ -87,7 +90,7 @@ sources by issuing, in a command shell:
  so as to set up paths to the MSVC tools correctly).
 
 
-VALIDATION
+# VALIDATION
 
 Correct operation, in the sense that a compressed file can always be
 decompressed to reproduce the original, is obviously of paramount
@@ -101,7 +104,7 @@ decompressed data is the same as the original.
 
 Please read and be aware of the following:
 
-WARNING:
+##WARNING:
 
    This program and library (attempts to) compress data by 
    performing several non-trivial transformations on it.  
@@ -112,7 +115,7 @@ WARNING:
    lead to disastrous loss of data.
 
 
-DISCLAIMER:
+## DISCLAIMER:
 
    I TAKE NO RESPONSIBILITY FOR ANY LOSS OF DATA ARISING FROM THE
    USE OF THIS PROGRAM/LIBRARY, HOWSOEVER CAUSED.
@@ -133,7 +136,7 @@ DISCLAIMER:
    has been carefully constructed and extensively tested.
 
 
-PATENTS:
+# PATENTS:
 
    To the best of my knowledge, bzip2/libbzip2 does not use any 
    patented algorithms.  However, I do not have the resources 
