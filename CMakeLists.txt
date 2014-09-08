@@ -1,5 +1,18 @@
 cmake_minimum_required(VERSION 2.8.12)
 project (bzip2 C)
+
+INCLUDE(${CMAKE_ROOT}/Modules/CheckLibraryExists.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/CheckIncludeFile.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/CheckTypeSize.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/CheckCXXSourceCompiles.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/CheckCSourceCompiles.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/TestBigEndian.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/CheckSymbolExists.cmake)
+INCLUDE(${CMAKE_ROOT}/Modules/GetPrerequisites.cmake)
+
+INCLUDE(CheckCCompilerFlag)
+
 set(PACKAGE "bzip2" CACHE STRING "")
 
 SET(bzip2_lib_SOURCES blocksort.c
@@ -19,14 +32,25 @@ IF(MSVC)
   )
 ENDIF()
 
+IF(NOT DEFINED CMAKE_INSTALL_LIBDIR)
+ SET(CMAKE_INSTALL_LIBDIR lib)
+ENDIF()
+
+IF(NOT DEFINED CMAKE_INSTALL_BINDIR)
+ SET(CMAKE_INSTALL_BINDIR bin)
+ENDIF()
+
+IF(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
+ SET(CMAKE_INSTALL_INCLUDEDIR include)
+ENDIF()
+
+
 INSTALL(
- TARGETS bz2 
- LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-   COMPONENT libraries
+ TARGETS bz2
  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-   COMPONENT libraries
+ LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-   COMPONENT libraries
+ COMPONENT library
  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
