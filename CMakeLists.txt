@@ -43,6 +43,7 @@ INCLUDE(${CMAKE_ROOT}/Modules/CheckSymbolExists.cmake)
 INCLUDE(${CMAKE_ROOT}/Modules/GetPrerequisites.cmake)
 
 INCLUDE(CheckCCompilerFlag)
+INCLUDE(GenerateExportHeader)
 
 ###
 # Various Options
@@ -63,7 +64,7 @@ IF(WIN32)
   OPTION(ENABLE_DLL "Build a Windows DLL." ${BUILD_SHARED_LIBS})
   IF(ENABLE_DLL)
     SET(BUILD_DLL ON CACHE BOOL "")
-    ADD_DEFINITIONS(-DBZ_EXPORT)
+    ADD_DEFINITIONS(-DLL_EXPORT)
   ENDIF()
 ENDIF()
 
@@ -77,10 +78,10 @@ SET(bzip2_lib_SOURCES blocksort.c
   decompress.c
   bzlib.c)
 
-ADD_LIBRARY(bz2 ${bzip2_lib_SOURCES})
+ADD_LIBRARY(bzip2 ${bzip2_lib_SOURCES})
 
 IF(MSVC)
-  SET_TARGET_PROPERTIES(bz2 PROPERTIES
+  SET_TARGET_PROPERTIES(bzip2 PROPERTIES
   LINK_FLAGS_DEBUG " /NODEFAULTLIB:MSVCRT"
   )
 ENDIF()
@@ -107,7 +108,7 @@ ENDIF()
 
 # Configure install locations, packages.
 INSTALL(
-  TARGETS bz2
+  TARGETS bzip2
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
